@@ -13,4 +13,8 @@ echo "<br>" . number_format(1234567890, 2); //소수점 2자리까지, 천단위
 
 define ("GREETING", "안녕하세요"); //상수 정의
 echo "<br>" . GREETING;
+
+// define("GREETING", "Hello"); 이건 안되는데
+// $GREETING = "Hello"; 이건 됨. 이상함.
+
 ?>

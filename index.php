@@ -1,21 +1,28 @@
-<?php
-// phpinfo(); //phpinfo() 함수는 PHP의 현재 설정 정보를 출력합니다.
-// 이 함수는 PHP의 버전, 설치된 확장 모듈, 환경 변수, 서버 정보 등 다양한 정보를 포함합니다. (PDO 있는지 확인)
-// exit;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSV 파일 업로드</title>
+</head>
+<body>
+	<form method="POST" name="uform" enctype="multipart/form-data" action="csv_upload.php">
+		<label for="">CSV 파일을 업로드 해주세요.</label><br>
+		<input type="file" name="csv" id="csv">
+		<button id="btn">확인</button>
+	</form>
 
-$server_name = $_SERVER['SERVER_NAME'];
-$username = "root";
-$password = "";
-
-//mysqli 커넥션 방식도 있지만 잘사용하지않고 (자바의 jdbc와 비슷)
-//PDO 방식이 더 많이 사용됨 (php 7버전부터는 mysqli보다 PDO를 권장)
-try {
-	$conn = new PDO("mysql:host=$server_name;", $username, $password);
-	echo "Connected successfully"; 
-}
-catch(PDOException $e) {
-	echo "Connection failed: " . $e->getMessage();
-}
-
-
-?>
+	<script>
+	const btn = document.querySelector("#btn");
+	btn.addEventListener("click", (e) => {
+		e.preventDefault();
+		const csv = document.querySelector("#csv");
+		if (csv.value == "") {
+			alert('파일을 선택해 주세요.');
+			return false;
+		}
+		document.uform.submit();
+	});
+</script>
+</body>
+</html>

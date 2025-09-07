@@ -17,7 +17,7 @@ var_dump($x or $y); //true
 /* 문자열 연산자 */
 $a = "Hello ";
 $b = "World!";
-echo "<br>" . $a . $b; // Hello World!
+
 
 
 ?>
